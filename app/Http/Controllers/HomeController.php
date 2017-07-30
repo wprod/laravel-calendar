@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use MaddHatter\LaravelFullcalendar\Facades\Calendar;
 
 class HomeController extends Controller
 {

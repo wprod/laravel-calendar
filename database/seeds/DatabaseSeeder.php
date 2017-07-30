@@ -1,6 +1,8 @@
 <?php
 
 use Illuminate\Database\Seeder;
+use App\User;
+use App\CalendarEvent;
 
 class DatabaseSeeder extends Seeder
 {
@@ -11,6 +13,16 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        // $this->call(UsersTableSeeder::class);
+        DB::table('users')->insert([
+            'name' => 'admin',
+            'email' => 'admin@admin.com',
+            'password' => bcrypt('powpow'), //nope, its not a real password
+        ]);
+
+        for($i=0; $i < 5; $i++)
+        {
+            $t = factory(CalendarEvent::class)->create();
+
+        };
     }
 }
