@@ -1,4 +1,4 @@
-@extends('layout')
+@extends('layouts.app')
 
 @section('content')
     <div class="page-header">
@@ -10,8 +10,9 @@
         <div class="col-md-12">
 
             <form action="{{ route('eventUpdate', $calendar_event->id) }}" method="POST">
-                <input type="hidden" name="_method" value="PUT">
+                {{ method_field('PUT') }}
                 <input type="hidden" name="_token" value="{{ csrf_token() }}">
+
 
                 <div class="form-group">
                     <label for="nome">ID</label>

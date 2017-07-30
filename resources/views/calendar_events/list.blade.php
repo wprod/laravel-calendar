@@ -1,4 +1,4 @@
-@extends('layout')
+@extends('layouts.app')
 
 @section('content')
     <div class="page-header">
@@ -11,13 +11,13 @@
             <table class="table table-striped">
                 <thead>
                 <tr>
-                    <th>ID</th>
-                    <th>TITLE</th>
-                    <th>START</th>
-                    <th>END</th>
-                    <th>IS_ALL_DAY</th>
-                    <th>BACKGROUND_COLOR</th>
-                    <th class="text-right">OPTIONS</th>
+                    <th>Id</th>
+                    <th>Evenement</th>
+                    <th>Début</th>
+                    <th>Fin</th>
+                    <th>Journée</th>
+                    <th>BCouleur</th>
+                    <th class="text-right">Actions</th>
                 </tr>
                 </thead>
 
@@ -34,13 +34,10 @@
 
                         <td class="text-right">
                             <a class="btn btn-primary" href="{{ route('eventShow', $calendar_event->id) }}">View</a>
-                            <a class="btn btn-warning "
-                               href="{{ route('eventEdit', $calendar_event->id) }}">Edit</a>
-                            <form action="{{ route('eventDelete', $calendar_event->id) }}" method="POST"
-                                  style="display: inline;"
-                                  onsubmit="if(confirm('Delete? Are you sure?')) { return true } else {return false };">
-                                <input type="hidden" name="_method" value="DELETE"><input type="hidden" name="_token"
-                                                                                          value="{{ csrf_token() }}">
+                            <a class="btn btn-warning " href="{{ route('eventEdit', $calendar_event->id) }}">Edit</a>
+                            <form action="{{ route('eventDelete', $calendar_event->id) }}" method="POST" style="display: inline;">
+                                <input type="hidden" name="_method" value="DELETE">
+                                <input type="hidden" name="_token" value="{{ csrf_token() }}">
                                 <button class="btn btn-danger" type="submit">Delete</button>
                             </form>
                         </td>
@@ -51,7 +48,7 @@
                 </tbody>
             </table>
 
-            <a class="btn btn-success" href="{{ route('calendar.create') }}">Create</a>
+            <a class="btn btn-success" href="{{ route('eventCreate') }}">Create</a>
         </div>
     </div>
 
